@@ -1,25 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+    <title>Vue Practice</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-    <div id="app">
-        <!-- built files will be auto injected -->
-        <h1>Events</h1>
-        <h5>Click Event</h5>
-        <button v-on:click="add">Add</button>
-        <button v-on:click="subtract">Subtract</button>
-        <p>Age:{{age}}</p>
-        <h5>Mousemove Event</h5>
-        <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div>
+<div id="app">
+    <!-- built files will be auto injected -->
+    <h1>Events:</h1>
+    <h5>Click Event</h5>
+    <button v-on:click="add">Add</button>
+    <button v-on:click="subtract">Subtract</button>
+    <p>Age:{{age}}</p>
+    <h5>Mousemove Event</h5>
+    <div id="canvas" v-on:mousemove="updateXY">{{x}}, {{y}}</div>
+    <div class="">
+        <h5>Keyboard Events</h5>
+        <label>Name:</label>
+        <input type="text" v-on:keyup="logName">
     </div>
+    <br>
+    <h1>Filters:</h1>
+    <h5>Uppercase</h5>
+    <p>{{title | uppercase}}</p>
+    <h5>Lowercase</h5>
+    <p>{{title | lowercase}}</p>
+    <br>
+    <h1>Transition:</h1>
+    <button @click="show = !show">Toggle</button>
+    <transition name="fade">
+        <div v-if="show">
+            <h3>{{transition}}</h3>
+        </div>
+    </transition>
+    <br>
+    <h1>Animation:</h1>
+        <button @click="show = !show">Toggle show</button>
+        <transition name="bounce">
+            <p v-if="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at
+                senectus et netus.</p>
+        </transition>
+</div>
 <script src="app.js"></script>
 </body>
 </html>
